@@ -15,17 +15,23 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-class Getter
+class Getter : public QWidget
 {
-
+Q_OBJECT
 public:
       Getter();
-    QString onResult(QNetworkReply *reply);
+
    QNetworkReply*  getData( QString str);
 
 
+public slots:
+
+     void onResult(QNetworkReply *reply);
+
+
+
 private:
-     Ui::MainWindow *ui;
+    Ui::MainWindow *ui;
     QNetworkAccessManager *manager;
 
 };

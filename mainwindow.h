@@ -23,5 +23,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Getter *g;
+      QNetworkAccessManager *request;
 };
 #endif // MAINWINDOW_H
