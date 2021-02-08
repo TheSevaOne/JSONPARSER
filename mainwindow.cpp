@@ -21,12 +21,16 @@ MainWindow::~MainWindow()
 
 
 
-void back (QNetworkReply *reply) {
-   Ui::MainWindow ui;
+void MainWindow::back (QNetworkReply *reply) {
+   //Ui::MainWindow ui;
        qDebug() <<Q_FUNC_INFO << "QNetworkAccessManager::finished";
-            qDebug()<< reply->readAll();
-                    QString data = QString::fromUtf8( reply->readAll() );
-                              ui.textEdit->setText( data );
+        //qDebug()<< reply->readAll().data();
+           QByteArray bytes = reply->readAll();
+        qDebug()<< bytes.size();
+
+                      qDebug() << QString::fromUtf8(bytes.data(), bytes.size());
+                      QString s = QString::fromUtf8(bytes.data(), bytes.size());
+                          ui->textEdit->setText(s);
                                         reply->deleteLater();
 }
 
